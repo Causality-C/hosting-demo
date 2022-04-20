@@ -38,13 +38,4 @@ app.get("/hello", (req,res) => {
     res.json({msg: "Testing, sending hello"});
 })
 
-// Serve Frontend
-const path = require('path')
-app.use("/",express.static(path.resolve(__dirname, "my-app/build")))
-// Make sure this is last or else api will call not be able to call /hello
-app.get("*", (req,res) => {
-    
-    res.sendFile(path.resolve(__dirname, "my-app/build", "index.html"))
-})
-
 app.listen(port, ()=>{console.log(`Listening on port ${port}`)} )
