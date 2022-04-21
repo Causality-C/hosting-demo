@@ -2,7 +2,7 @@ const express = require("express")
 // Loads environment variables
 require("dotenv").config()
 // Heroku will automatically have its own port
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 const app = express();
 const cors = require("cors")
 app.use(cors())
