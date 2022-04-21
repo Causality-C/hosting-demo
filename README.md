@@ -55,7 +55,7 @@ If there are any issues, you can view the most recent logs by running `heroku lo
 ## Deploy Frontend to Netlify
 
 1. Create a Netlify Account and Project
-2. Click "Import Existing Project"
+2. Click "Import Existing Project" -> Choose your repository
 ![image](https://user-images.githubusercontent.com/39445369/164546877-570126ae-b10a-49da-9759-5159bc715452.png)
 
 
