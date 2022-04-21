@@ -43,6 +43,7 @@ We will be using Heroku to host our application so there are a few things that n
 1. Create a Heroku Account and Project: https://dashboard.heroku.com/login
 2. Download and install the Heroku Cli Tool: https://devcenter.heroku.com/articles/heroku-cli
 3. Once the Cli tool is installed, navigate back to the directory and run `heroku login` -> if you get stuck, consult this [source](https://devcenter.heroku.com/articles/heroku-cli#:~:text=with%20these%20instructions.-,Get%20Started%20with%20the%20Heroku%20CLI,-After%20you%20install)
+4. IMPORTANT: in my-app/src/App.js, replace "https://hosting-hackathon-demo.herokuapp.com/" with your heroku app URL -> your app should be in the format of "https://your-app-name.herokuapp.com/"
 5. If you have made any changes, make a commit via `git commit -am "changes"`
 6. Deploy this branch to heroku via `git push heroku decoupled-hosting:main` -> we have `decoupled-hosting:main` since heroku technically only allows you to push main branches in a repository.
 7. Run `source export_env.sh .env` to export your environment variables from .env onto Heroku
