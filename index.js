@@ -1,10 +1,12 @@
-const express = require("express");
-// Loads environment variables
+const express = require("express"); // Loads environment variables
 require("dotenv").config();
 // Heroku will automatically have its own port
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 8000;
 const app = express();
+const cors = require("cors");
+
 app.use(express.json());
+app.use(cors());
 
 // Connect firebase App: can leave commented out, loads environment variables
 const admin = require("firebase-admin");
@@ -13,11 +15,13 @@ admin.initializeApp({
   credential: admin.credential.cert(adminConfig),
 });
 const database = admin.firestore();
+
 // Create an API Route: should be available on -> localhost:5000/user
-app.get("/user", async (req, res) => {
-  const user = await database.collection("user").doc("jonathan").get();
+app.get("/users/:user_name", async (req, res) => {
+  const user_name = req.params.user_name;
+  const user = await database.collection("users").doc(user_name).get();
   const data = user.data();
-  res.json({ msg: "Testing, sending hello", user: data });
+  res.json({ msg: "Hello, " + data.name, user: data });
 });
 
 // Create an API Route: should be available on -> localhost:5000/hello
@@ -32,7 +36,6 @@ app.use("/", express.static(path.resolve(__dirname, "my-app/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "my-app/build", "index.html"));
 });
-
-app.listen(8000, () => {
+app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
